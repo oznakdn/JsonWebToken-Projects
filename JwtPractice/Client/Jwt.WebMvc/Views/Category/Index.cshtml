@@ -1,0 +1,31 @@
+﻿@model IEnumerable<GetCategoriesResponse.Category>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        @if(Model is null)
+        {
+            <h1 class="text-center text-primary">Loading...</h1>
+        }
+        else
+        {
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <Th>Category ID</Th>
+                        <Th>Category Name</Th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.categoryId</td>
+                            <td>@item.categoryName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        
+    </div>
+</div>

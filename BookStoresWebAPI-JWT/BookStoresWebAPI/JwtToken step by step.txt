@@ -1,0 +1,55 @@
+﻿JWT Token Step by Step
+1) Create SecretKey in appsettings.json
+2) Install JwtBearer Package on the Nuget package manager
+3) Generate Token after Authentication
+4) builder.Services.AddAuthentication's configurations
+5) JwtBearerDefaults
+6) AddJwtBearer
+7) use the [Authorize] attribute in Contollers
+
+
+-------------------- appsettings.json Configuration ----------------------------
+ "JwtSettings": {
+    "SecretKey": "thisissecretkeyanddontshareitanyone"
+  }
+--------------------------------------------------------------------------------
+
+
+-------------------- Nuget Package ---------------------------------------------
+ Microsoft.AspNetCore.Authentication.JwtBearer
+--------------------------------------------------------------------------------
+
+
+-------------------- program.cs Configuration ----------------------------
+var jwtSection =builder.Configuration.GetSection("JwtSettings");
+builder.Services.Configure<JwtSettings>(jwtSection);
+
+//to validate the token which has been sent by clients
+var appSettings = jwtSection.Get<JwtSettings>();
+var key = Encoding.ASCII.GetBytes(appSettings.SecretKey);
+
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = true;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ClockSkew = TimeSpan.Zero
+    };
+});
+
+
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+--------------------------------------------------------------------------------

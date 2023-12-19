@@ -1,0 +1,30 @@
+
+@model IEnumerable<RolesViewModel>
+
+    <div class="row mt-3">
+    <div class="text-center">
+        <h1 class="display-4">Roles</h1>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-8 offset-2">
+        <table class="table table-bordered">
+            <thead>
+                <tr class="text-center">
+                    <th>Id</th>
+                    <th>Role Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var role in Model)
+                {
+                    <tr class="text-center">
+                        <td>@role.id</td>
+                        <td>@role.roleTitle</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

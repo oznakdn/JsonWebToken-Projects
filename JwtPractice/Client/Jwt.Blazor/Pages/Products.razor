@@ -1,0 +1,46 @@
+﻿@page "/products"
+@using Jwt.Blazor.Dtos.ProductDtos;
+@using Jwt.Blazor.Services.Concretes;
+@using Jwt.Blazor.Services.Contracts;
+@inject IProductService productService;
+
+<h3>Products</h3>
+@if(products is null)
+{
+    <h3>Loading...</h3>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in products)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@item.Price</td>
+                <td>@item.Quantity</td>
+                <td>@item.Category</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code {
+
+    IEnumerable<ProductsDto> products { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await productService.GetProducts();
+    }
+}

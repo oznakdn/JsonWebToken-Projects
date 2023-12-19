@@ -1,0 +1,10 @@
+﻿
+Package Manager Console :
+Scaffold-DbContext "Server=DESKTOP-9DAI51M; Database=BookStoresDB; Trusted_Connection=true" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data
+
+After writing the ConnectionString in appsettings.json
+Package Manager Console :
+Scaffold-DbContext -Connection Name=BookStoresDB Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data -force
+
+to Change the entity class:
+Scaffold-DbContext -Connection Name=BookStoresDB Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data -force

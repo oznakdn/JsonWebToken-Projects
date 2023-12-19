@@ -1,0 +1,31 @@
+﻿global using Jwt.Api.Data.Contexts;
+global using Jwt.Api.Security;
+global using Jwt.Api.Services.Concretes;
+global using Jwt.Api.Services.Contracts;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.IdentityModel.Tokens;
+global using Microsoft.OpenApi.Models;
+global using System.Text;
+global using Jwt.Api.Models.Dtos.AuthDtos;
+global using Microsoft.AspNetCore.Mvc;
+global using Jwt.Api.Models.Dtos.CategoryDtos;
+global using Jwt.Api.Models.Results.Contracts;
+global using Microsoft.AspNetCore.Authorization;
+global using Jwt.Api.Models.Entities;
+global using Jwt.Api.Models.Identities;
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;
+global using Microsoft.Extensions.Options;
+global using System.IdentityModel.Tokens.Jwt;
+global using System.Security.Claims;
+global using Jwt.Api.Models.Results.Concretes;
+global using Jwt.Api.Models.Dtos.ProductDtos;
+global using Jwt.Api.Models.Dtos.UserDtos;
+global using Jwt.Api.Models.Dtos.RoleDtos;
+global using Jwt.Api.Configuration;
+global using System.Reflection;
+global using AutoMapper;
+global using FluentValidation;
+
+

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<UsersViewModel>
+
+
+<div class="row mt-3">
+    <div class="text-center">
+        <h1 class="display-4">Users</h1>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-8 offset-2">
+        <table class="table table-bordered">
+            <thead>
+                <tr class="text-center">
+                    <th>Id</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr class="text-center">
+                        <td>@user.id</td>
+                        <td>@user.username</td>
+                        <td>@user.email</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

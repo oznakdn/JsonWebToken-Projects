@@ -1,0 +1,30 @@
+@model AssignRoleViewModel
+
+<div class="row mt-3">
+    <div class="text-center">
+        <h1 class="display-4">Assign Role</h1>
+    </div>
+</div>
+
+
+<div class="row mt-3">
+    <div class="col-4 offset-4">
+        <form asp-action="AssignRole" method="post">
+           <input type="hidden" asp-for="UserId" />
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-outline mb-4">
+                <label class="form-label">Roles</label>
+                 <select asp-for="RoleId" class="form-control">
+                    @foreach(var role in  ViewBag.Roles)
+                    {
+                        <option value="@role.id" >@role.roleTitle</option>
+                    }
+                 </select>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Add</button>
+            </div>
+        </form>
+
+    </div>
+</div>
